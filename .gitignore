@@ -1,0 +1,28 @@
+# Runtastic (adidas Running) data export: personal data, never commit
+/Challenges/
+/Comments/
+/Groups/
+/Likes/
+/Live-tracking-cheerings/
+/Photos/
+/Privacy-settings/
+/Purchases/
+/Social-connections/
+/Sport-sessions/
+/Support-Correspondence/
+/User/
+/User-Events/
+/Datenauskunft.pdf
+/data_information.pdf
+
+# Generated from the export (GPS tracks, heart rate, Polar user id)
+TCX-export/
+TCX-export.zip
+*.tcx
+polar-dry-run/
+polar-uploaded.json
+
+# Python / macOS
+__pycache__/
+*.pyc
+.DS_Store

@@ -1,0 +1,16 @@
+syntax = "proto2";
+package polar;
+message PbDate { required uint32 year = 1; required uint32 month = 2; required uint32 day = 3; }
+message PbTime { required uint32 hour = 1; required uint32 minute = 2; required uint32 seconds = 3; optional uint32 millis = 4; }
+message PbLocalDateTime { required PbDate date = 1; required PbTime time = 2; optional bool obsolete_trusted = 3; optional int32 time_zone_offset = 4; }
+message PbDuration { optional uint32 hours = 1; optional uint32 minutes = 2; optional uint32 seconds = 3; optional uint32 millis = 4; }
+message PbSportIdentifier { required uint64 value = 1; }
+message PbMultiLineText { required string text = 1; }
+message PbTrainingSession { required PbLocalDateTime start = 1; required uint32 exercise_count = 2; optional string device_id = 3; optional string model_name = 4; optional PbDuration duration = 5; optional float distance = 6; optional uint32 calories = 7; optional PbMultiLineText note = 13; }
+message PbExerciseBase { required PbLocalDateTime start = 1; required PbDuration duration = 2; required PbSportIdentifier sport = 3; optional float distance = 4; optional uint32 calories = 5; optional float ascent = 10; optional float descent = 11; optional double latitude = 12; optional double longitude = 13; }
+message PbHeartRateStatistics { optional uint32 minimum = 1; optional uint32 average = 2; optional uint32 maximum = 3; }
+message PbSpeedStatistics { optional float average = 1; optional float maximum = 2; }
+message PbAltitudeStatistics { optional float minimum = 1; optional float average = 2; optional float maximum = 3; }
+message PbExerciseStatistics { optional PbHeartRateStatistics heart_rate = 1; optional PbSpeedStatistics speed = 2; optional PbAltitudeStatistics altitude = 4; }
+message PbExerciseSamples { required PbDuration recording_interval = 1; repeated uint32 heart_rate_samples = 2 [packed=true]; repeated float altitude_samples = 6 [packed=true]; repeated float speed_samples = 9 [packed=true]; repeated float distance_samples = 11 [packed=true]; }
+message PbExerciseRouteSamples { repeated uint32 duration = 1 [packed=true]; repeated double latitude = 2 [packed=true]; repeated double longitude = 3 [packed=true]; repeated sint32 gps_altitude = 4 [packed=true]; }
